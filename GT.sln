@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{EAA19194-B244-4B4F-932C-89DB9AC66FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{EAA19194-B244-4B4F-932C-89DB9AC66FC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HookIn", "HookIn\HookIn.csproj", "{893C6E35-64F9-400E-8096-D301157B3267}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{F538510B-4F21-419C-A61F-6C297970FFA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EAA19194-B244-4B4F-932C-89DB9AC66FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA19194-B244-4B4F-932C-89DB9AC66FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAA19194-B244-4B4F-932C-89DB9AC66FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893C6E35-64F9-400E-8096-D301157B3267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893C6E35-64F9-400E-8096-D301157B3267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893C6E35-64F9-400E-8096-D301157B3267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893C6E35-64F9-400E-8096-D301157B3267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F538510B-4F21-419C-A61F-6C297970FFA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F538510B-4F21-419C-A61F-6C297970FFA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F538510B-4F21-419C-A61F-6C297970FFA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F538510B-4F21-419C-A61F-6C297970FFA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
