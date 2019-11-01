@@ -11,7 +11,7 @@ namespace Domain.Repository
         where TEntity :class, IEntity
          where TContext: DbContext
     {
-        private readonly TContext _context;
+        public TContext _context;
         public EfRepository(TContext context)
         {
             this._context = context;

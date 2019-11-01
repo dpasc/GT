@@ -17,7 +17,7 @@ namespace UI.Api
     {
         private readonly TRepository _repository;
 
-        public MainController(TRepository repository)
+        public MainController(TRepository repository) 
         {
             this._repository = repository;
         }
@@ -30,6 +30,22 @@ namespace UI.Api
                 return await _repository.GetAll();
 
         }
+
+        //Get by Id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TEntity>>Get(int id)
+        {
+            var entity = await _repository.Get(id);
+            if(entity == null)
+            {
+                return NotFound();
+            }
+
+            return entity;
+        }
+
+
+
     }
 
   }
