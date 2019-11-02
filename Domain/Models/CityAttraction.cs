@@ -1,11 +1,11 @@
-﻿using Domain.Data;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Library.Models.Models
 {
-    public class CityAttraction :IEntity
+    public class CityAttraction
     {
         public CityAttraction()
 

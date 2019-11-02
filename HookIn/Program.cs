@@ -1,29 +1,37 @@
-﻿using Library.Models;
+﻿using Domain.Repository;
+using Library.Models;
 using Library.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HookIn
 {
     class Program
     {
-        static void Main(string[] args)
+        private TravelProviderRepository _tp;
+        public Program(TravelProviderRepository tp)
         {
-            GTContext gt = new GTContext();
+            this._tp = tp;
+        }
+        static void Main(string[] args)
+       {
+            TravelProviderRepository tpr = new TravelProviderRepository();
 
-            IEnumerable<CityAttraction> cityAttractions = gt.CityAttractions.ToList();
-            
-            foreach(var i in cityAttractions)
+            TravelProvider tp = new TravelProvider()
             {
-                Console.WriteLine(i.Name);
-            }
+                Name = " Travellin Places"
+            };
 
-
-
+            tpr.Insert(tp);
+            tpr.Save();
 
             Console.Read();
 
         }
+
+
     }
 }
+

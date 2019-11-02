@@ -135,3 +135,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeA
 C:\Users\Damian\Desktop\GT\GT\UI\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Customer\Index.cshtml.g.cs

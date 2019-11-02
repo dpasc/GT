@@ -2,50 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain.Data;
-using Domain.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Library.Models;
+using Library.Models.Models;
+using Domain.Repository;
 
 namespace UI.Api
 {
-    [Route("api/[Main]")]
+    [Route("api/Main")]
     [ApiController]
-    public abstract class MainController<TEntity, TRepository> : ControllerBase
-        where TEntity : class, IEntity
-        where TRepository : IRepository<TEntity>
+    public class MainController : ControllerBase
     {
-        private readonly TRepository _repository;
+        private readonly TravelProviderRepository _travelProviderRepository;
 
-        public MainController(TRepository repository) 
+        public MainController(TravelProviderRepository travelProviderRepository)
         {
-            this._repository = repository;
+            _travelProviderRepository = travelProviderRepository;
         }
 
+      
 
-        //Get:api/[controller]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TEntity>>> Get()
+        public IEnumerable<TravelProvider> Get()
         {
-                return await _repository.GetAll();
+            return  _travelProviderRepository.GetAll();
+   
+        } 
 
-        }
-
-        //Get by Id
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>>Get(int id)
+        public TravelProvider Get(int id)
         {
-            var entity = await _repository.Get(id);
-            if(entity == null)
-            {
-                return NotFound();
-            }
-
-            return entity;
+            return _travelProviderRepository.GetById(id);
         }
-
-
-
+        
     }
-
-  }
+}
