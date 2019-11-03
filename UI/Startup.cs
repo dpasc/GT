@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using UI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Library.Models;
+using Library.Models.Models;
 using Domain.Repository;
+using Domain.Models;
 
 namespace UI
 {
@@ -33,14 +34,20 @@ namespace UI
 
 
             //Context
-            services.AddDbContext<GTContext>();
+            services.AddDbContext<GTContext>(options =>
+            options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection"))); 
+            services.AddDbContext<RepoContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection"))); ;
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-           //Repositories 
+            //Repositories 
+            services.AddScoped<IRepository, Repository<GTContext>>();
         //    services.AddScoped<CityAttractionRepository>();
-            services.AddScoped<TravelProviderRepository>();
+          //  services.AddScoped<TravelProviderRepository>();
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

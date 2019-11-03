@@ -10,20 +10,28 @@ namespace Library.Models
 
     public class GTContext : DbContext
     {
-        private string _connectionString;
+        //private string _connectionString;
 
-        public GTContext()
+        public GTContext(DbContextOptions<GTContext> options) : base(options)
         {
-            var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("appsettings.json", optional: false);
-            var configuration = builder.Build();
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+
         }
+
+
+        //public GTContext()
+        //{
+ 
+        //    var builder = new ConfigurationBuilder();
+        //    builder.AddJsonFile("appsettings.json", optional: false);
+        //    var configuration = builder.Build();
+        //    _connectionString = configuration.GetConnectionString("DefaultConnection");
+        //}
+
       
-        protected override void OnConfiguring(DbContextOptionsBuilder o)
-        {
-            o.UseSqlServer(_connectionString);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder o)
+        //{
+        //    o.UseSqlServer(_connectionString);
+        //}
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -130,6 +138,8 @@ namespace Library.Models
                 .HasDefaultValueSql("DATEADD(month, 3, GETDATE())");
 
         }
+        
+        
         public DbSet<City> Cities { get; set; }
         public DbSet<CityAttraction> CityAttractions { get; set; }
         public DbSet<CustomerTravelPackage> CustomerTravelPackages { get; set; }
