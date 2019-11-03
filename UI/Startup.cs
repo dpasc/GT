@@ -13,8 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Library.Models;
 using Library.Models.Models;
-using Domain.Repository;
-using Domain.Models;
+
+using Domain.Data.MainRepository.Repositories;
 
 namespace UI
 {
@@ -37,17 +37,13 @@ namespace UI
             services.AddDbContext<GTContext>(options =>
             options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"))); 
-            services.AddDbContext<RepoContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"))); ;
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories 
-            services.AddScoped<IRepository, Repository<GTContext>>();
-        //    services.AddScoped<CityAttractionRepository>();
-          //  services.AddScoped<TravelProviderRepository>();
+            services.AddScoped<TravelProviderRepository>();
+            services.AddScoped<CityAttractionsRepository>();
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

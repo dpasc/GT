@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Library.Models.Models
 {
-    public class Customer :Person
+    public class Customer :Person 
     {
         public Customer()
         {

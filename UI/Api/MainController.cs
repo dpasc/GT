@@ -2,85 +2,81 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Data;
 using Domain.Models;
-using Domain.Repository;
+
 using Library.Models;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace UI.Api
 {
     [Route("api/Main")]
     [ApiController]
-    public class MainController : ControllerBase
+    public abstract class MainController<TEntity, TRepository> : ControllerBase
+        where TEntity : class, IEntity
+        where TRepository : IRepository<TEntity>
     {
-        private readonly IRepository _repository;
-        public MainController(GTContext repoContext, IRepository repository)
-        {
-            _repository = repository;
-        }
 
-        // GET: api/Main
+        internal readonly TRepository repository;
+
+        public MainController(TRepository repository)
+        {
+            this.repository = repository;
+        }
+        // GET: api/[controller]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TravelProvider>>> Get()
+        public async Task<ActionResult<IEnumerable<TEntity>>> Get()
         {
-            var travelProviders = await _repository.FindAll<TravelProvider>();
-            //var otherPost = await _context.Post.Skip(page * pageSize).Take(pageSize).ToListAsync();
-            return travelProviders;
+            return await repository.GetAll();
         }
 
-        // GET: api/Posts/5
+        // GET: api/[controller]/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TravelProvider>> Get(int id)
+        public async Task<ActionResult<TEntity>> Get(int id)
         {
-            var travelProviders = await _repository.FindById<TravelProvider>(id);
-
-            if (travelProviders == null)
+            var entity = await repository.Get(id);
+            if (entity == null)
             {
                 return NotFound();
             }
-
-            return travelProviders;
+            return entity;
         }
 
-        // PUT: api/Main/5
+        // PUT: api/[controller]/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, TravelProvider tp)
+        public async Task<IActionResult> Put(int id, TEntity entity)
         {
-            if (id != tp.Id)
+            if (id != entity.Id)
             {
                 return BadRequest();
             }
-
-            await _repository.UpdateAsync<TravelProvider>(tp);
-
+            await repository.Update(entity);
             return NoContent();
         }
 
-        // POST: api/Posts
+        // POST: api/[controller]
         [HttpPost]
-        public async Task<ActionResult<TravelProvider>> Post(TravelProvider travelProviders)
+        public async Task<ActionResult<TEntity>> Post(TEntity entity)
         {
-            await _repository.CreateAsync<TravelProvider>(travelProviders);
-            return CreatedAtAction("Create", new { id = travelProviders.Id }, travelProviders);
+            await repository.Add(entity);
+            return CreatedAtAction("Get", new { id = entity.Id }, entity);
         }
 
-        // DELETE: api/Posts/5
+        // DELETE: api/[controller]/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TravelProvider>> Delete(int id)
+        public async Task<ActionResult<TEntity>> Delete(int id)
         {
-            var travelProviders = await _repository.FindById<TravelProvider>(id);
-
-            if (travelProviders == null)
+            var entity = await repository.Delete(id);
+            if (entity == null)
             {
                 return NotFound();
             }
-
-            await _repository.DeleteAsync<TravelProvider>(travelProviders);
-
-            return travelProviders;
+            return entity;
         }
+
 
     }
 }

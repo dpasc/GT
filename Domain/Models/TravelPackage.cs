@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Library.Models.Models
 {
     public enum TravelPackageStatus { Draft = 1, Active = 2, Cancelled = 3 }
-    public class TravelPackage
+    public class TravelPackage : IEntity
     {
         public TravelPackage()
         {

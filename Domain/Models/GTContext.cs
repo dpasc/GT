@@ -10,7 +10,7 @@ namespace Library.Models
 
     public class GTContext : DbContext
     {
-        //private string _connectionString;
+        private string _connectionString;
 
         public GTContext(DbContextOptions<GTContext> options) : base(options)
         {
@@ -18,20 +18,20 @@ namespace Library.Models
         }
 
 
-        //public GTContext()
-        //{
- 
-        //    var builder = new ConfigurationBuilder();
-        //    builder.AddJsonFile("appsettings.json", optional: false);
-        //    var configuration = builder.Build();
-        //    _connectionString = configuration.GetConnectionString("DefaultConnection");
-        //}
+        public GTContext()
+        {
 
-      
-        //protected override void OnConfiguring(DbContextOptionsBuilder o)
-        //{
-        //    o.UseSqlServer(_connectionString);
-        //}
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", optional: false);
+            var configuration = builder.Build();
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder o)
+        {
+            o.UseSqlServer(_connectionString);
+        }
 
         protected override void OnModelCreating(ModelBuilder b)
         {
