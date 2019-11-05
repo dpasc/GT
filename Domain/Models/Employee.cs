@@ -6,5 +6,8 @@ namespace Library.Models.Models
 {
     public class Employee :Person
     {
+
+
+
     }
 }

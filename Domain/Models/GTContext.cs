@@ -74,10 +74,10 @@ namespace Library.Models
             b.Entity<CustomerTravelPackage>()
                 .HasKey(ctp => new { ctp.CustomerId, ctp.TravelPackageId });
 
-            //Configure Non Mapped Properties for Travel Provider
-            b.Entity<TravelProvider>()
-                .Ignore(tp => tp.Customers)
-                .Ignore(tp => tp.Employees);
+            ////Configure Non Mapped Properties for Travel Provider
+            //b.Entity<TravelProvider>()
+            //    .Ignore(tp => tp.Customers)
+            //    .Ignore(tp => tp.Employees);
 
             //Config Concatenate Key for Travel Package City
             b.Entity<TravelPackageCity>()
@@ -148,7 +148,6 @@ namespace Library.Models
         public DbSet<TravelPackage> TravelPackages { get; set; }
         public DbSet<TravelPackageCity> TravelPackageCities { get; set; }
         public DbSet<TravelPackageCityAttraction> TravelPackageCityAttractions { get; set; }
-        public DbSet<TravelProvider> TravelProviders { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
 
     }

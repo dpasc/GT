@@ -18,35 +18,28 @@ namespace HookIn
        {
 
             var gTContext = new GTContext();
-            var tpr = new TravelProviderRepository(gTContext);
-            var car = new CityAttractionsRepository(gTContext);
 
-
-         //Travel Provider
-
-            //Create are new travel provider
-            TravelProvider tp = new TravelProvider()
-            {
-                Name = "Lambda Travel"
-            };
-            //Task.Run(async () => { await tpr.AddTP(tp); });
+            //var car = new CityAttractionsRepository(gTContext);
+            var peo = new PersonRepository(gTContext);
 
 
             //City Attraction
 
             //Create City Attraction
-            CityAttraction ca = new CityAttraction()
-            {
-                Name = "Bobs Burgers",
-                Description = "Get a burger",
-                CityId = 1036842122
+            //CityAttraction ca = new CityAttraction()
+            //{
+            //    Name = "Zoo",
+            //    Description = "Checkout the animals",
+            //    CityId = 1036842122
 
-            };
+            //};
             //Task.Run(async () => { await car.AddCA(ca); });
 
+            ////Create new Customer 
+        
+            Task.Run(async () => { await peo.AddCustomer("John","Smith" ); });
 
-
-
+            Console.WriteLine("Done");
 
             Console.Read();
 

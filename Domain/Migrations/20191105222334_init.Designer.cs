@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(GTContext))]
-    [Migration("20191031183105_First")]
-    partial class First
+    [Migration("20191105222334_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -169,12 +169,7 @@ namespace Domain.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<int>("TravelProviderId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TravelProviderId");
 
                     b.ToTable("People");
 
@@ -248,21 +243,6 @@ namespace Domain.Migrations
                     b.HasIndex("TravelPackageCityId");
 
                     b.ToTable("TravelPackageCityAttractions");
-                });
-
-            modelBuilder.Entity("Library.Models.Models.TravelProvider", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TravelProviders");
                 });
 
             modelBuilder.Entity("Library.Models.Models.Voucher", b =>
@@ -376,15 +356,6 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.CustomerTravelPackage", "CustomerTravelPackage")
                         .WithMany("Payments")
                         .HasForeignKey("CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Library.Models.Models.Person", b =>
-                {
-                    b.HasOne("Library.Models.Models.TravelProvider", "TravelProvider")
-                        .WithMany("People")
-                        .HasForeignKey("TravelProviderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

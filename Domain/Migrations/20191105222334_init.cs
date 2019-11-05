@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Domain.Migrations
 {
-    public partial class First : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,21 @@ namespace Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "People",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Forename = table.Column<string>(maxLength: 255, nullable: false),
+                    Surname = table.Column<string>(maxLength: 255, nullable: false),
+                    PersonType = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_People", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TravelPackages",
                 columns: table => new
                 {
@@ -39,19 +54,6 @@ namespace Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TravelPackages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TravelProviders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TravelProviders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,6 +73,29 @@ namespace Domain.Migrations
                         name: "FK_CityAttractions_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vouchers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    DiscountPercentage = table.Column<int>(nullable: false),
+                    Expires = table.Column<DateTime>(nullable: false, defaultValueSql: "DATEADD(month, 3, GETDATE())"),
+                    Valid = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vouchers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vouchers_People_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -98,75 +123,6 @@ namespace Domain.Migrations
                         name: "FK_TravelPackageCities_TravelPackages_TravelPackageId",
                         column: x => x.TravelPackageId,
                         principalTable: "TravelPackages",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "People",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TravelProviderId = table.Column<int>(nullable: false),
-                    Forename = table.Column<string>(maxLength: 255, nullable: false),
-                    Surname = table.Column<string>(maxLength: 255, nullable: false),
-                    PersonType = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_People", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_People_TravelProviders_TravelProviderId",
-                        column: x => x.TravelProviderId,
-                        principalTable: "TravelProviders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TravelPackageCityAttractions",
-                columns: table => new
-                {
-                    TravelPackageCityId = table.Column<int>(nullable: false),
-                    CityAttractionId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TravelPackageCityAttractions", x => new { x.CityAttractionId, x.TravelPackageCityId });
-                    table.ForeignKey(
-                        name: "FK_TravelPackageCityAttractions_CityAttractions_CityAttractionId",
-                        column: x => x.CityAttractionId,
-                        principalTable: "CityAttractions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_TravelPackageCityAttractions_TravelPackageCities_TravelPackageCityId",
-                        column: x => x.TravelPackageCityId,
-                        principalTable: "TravelPackageCities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Vouchers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    DiscountPercentage = table.Column<int>(nullable: false),
-                    Expires = table.Column<DateTime>(nullable: false, defaultValueSql: "DATEADD(month, 3, GETDATE())"),
-                    Valid = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vouchers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Vouchers_People_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -201,6 +157,30 @@ namespace Domain.Migrations
                         name: "FK_CustomerTravelPackages_Vouchers_VoucherId",
                         column: x => x.VoucherId,
                         principalTable: "Vouchers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TravelPackageCityAttractions",
+                columns: table => new
+                {
+                    TravelPackageCityId = table.Column<int>(nullable: false),
+                    CityAttractionId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TravelPackageCityAttractions", x => new { x.CityAttractionId, x.TravelPackageCityId });
+                    table.ForeignKey(
+                        name: "FK_TravelPackageCityAttractions_CityAttractions_CityAttractionId",
+                        column: x => x.CityAttractionId,
+                        principalTable: "CityAttractions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TravelPackageCityAttractions_TravelPackageCities_TravelPackageCityId",
+                        column: x => x.TravelPackageCityId,
+                        principalTable: "TravelPackageCities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -253,11 +233,6 @@ namespace Domain.Migrations
                 columns: new[] { "CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_People_TravelProviderId",
-                table: "People",
-                column: "TravelProviderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TravelPackageCities_CityId",
                 table: "TravelPackageCities",
                 column: "CityId");
@@ -306,9 +281,6 @@ namespace Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "People");
-
-            migrationBuilder.DropTable(
-                name: "TravelProviders");
         }
     }
 }

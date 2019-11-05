@@ -15,5 +15,6 @@ namespace Library.Models.Models
         public List<CustomerTravelPackage> TravelPackages { get; set; }
         public List<Voucher> Vouchers { get; set; }
 
+
     }
 }

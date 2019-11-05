@@ -8,9 +8,9 @@ namespace Library.Models.Models
     public class Person :IEntity
     {
         public int Id { get; set; }
-        public int TravelProviderId { get; set; }
-        public TravelProvider TravelProvider { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
+  
+
     }
 }
