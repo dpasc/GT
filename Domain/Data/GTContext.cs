@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.Models
+namespace Domain.Data
 {
 
     public class GTContext : DbContext

@@ -1,4 +1,5 @@
 ﻿
+using Domain.Data;
 using Domain.Data.MainRepository.Repositories;
 using Library.Models;
 using Library.Models.Models;
@@ -20,7 +21,9 @@ namespace HookIn
             var gTContext = new GTContext();
 
             //var car = new CityAttractionsRepository(gTContext);
-            var peo = new PersonRepository(gTContext);
+            //var peo = new PersonRepository(gTContext);
+            var tpc = new TravelPackageCityRepository(gTContext);
+
 
 
             //City Attraction
@@ -36,8 +39,16 @@ namespace HookIn
             //Task.Run(async () => { await car.AddCA(ca); });
 
             ////Create new Customer 
-        
-            Task.Run(async () => { await peo.AddCustomer("John","Smith" ); });
+
+            //Task.Run(async () => { await peo.AddEmployee("Sam", "Smith"); });
+
+            //New TravelPackage
+            //Task.Run(async () => { await tpc.AddTPC(1,1012850542, 2); });
+
+            var otpc = gTContext.TravelPackageCities.FirstOrDefault();
+            Console.WriteLine(otpc.City.Name);
+
+
 
             Console.WriteLine("Done");
 

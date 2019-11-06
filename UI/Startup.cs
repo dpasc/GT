@@ -11,10 +11,8 @@ using UI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Library.Models;
-using Library.Models.Models;
-
 using Domain.Data.MainRepository.Repositories;
+using Domain.Data;
 
 namespace UI
 {
@@ -36,7 +34,7 @@ namespace UI
             //Context
             //services.AddDbContext<GTContext>(options =>
             //options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection"))); 
+            //        Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

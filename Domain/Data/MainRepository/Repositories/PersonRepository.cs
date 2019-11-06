@@ -30,5 +30,19 @@ namespace Domain.Data.MainRepository.Repositories
         }
 
         //Create staff memeber
+        public async Task<Employee> AddEmployee(string forename, string surname)
+        {
+            var employee = new Employee()
+            {
+                Forename = forename,
+                Surname = surname
+            };
+
+            context.People.Add(employee);
+            await context.SaveChangesAsync();
+            return employee;
+        }
+
+
     }
 }
