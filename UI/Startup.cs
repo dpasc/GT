@@ -40,8 +40,10 @@ namespace UI
                     Configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories 
+            services.AddScoped<TravelProviderRepository>();
             services.AddScoped<CityAttractionsRepository>();
             services.AddScoped<PersonRepository>();
+            services.AddScoped<TravelPackageCityRepository>();
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

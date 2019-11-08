@@ -7,6 +7,7 @@ using Domain.Data.MainRepository.Repositories;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace UI.Areas.Staff.Controllers
 {
@@ -26,7 +27,7 @@ namespace UI.Areas.Staff.Controllers
         public async Task<IActionResult> Index()
         {
 
-            return View(await _car.GetAllCA());
+            return View(await _car.GetAll());
         }
 
         //Create methods
@@ -36,8 +37,8 @@ namespace UI.Areas.Staff.Controllers
 
             ViewData["CityId"] = new SelectList(_car.context.Cities.OrderBy(x => x.Name), "Id", "Name");
             return View();
-
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -51,12 +52,38 @@ namespace UI.Areas.Staff.Controllers
 
         //Update
         [HttpGet]
-        public async Task<IActionResult> Update(int id)
+        public  async Task<IActionResult> Update(int? id)
         {
-            get 
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var ca = await _car.Get(id);
+            if(ca == null)
+            {
+                return NotFound();
+            }
+            ViewData["CityId"] = new SelectList(_car.context.Cities.OrderBy(x => x.Name), "Id", "Name");
+            return View(ca);
+
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, CityAttraction ca)
+        {
+            if(id != ca.Id)
+            {
+                return NotFound();
+            }
 
+            if(ModelState.IsValid)
+            {
+                    await _car.Update(ca);            
+            }
+            return RedirectToAction(nameof(Index));
+
+        }
 
     }
 }

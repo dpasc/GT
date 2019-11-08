@@ -1,5 +1,6 @@
 ﻿using Library.Models;
 using Library.Models.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,26 +16,34 @@ namespace Domain.Data.MainRepository.Repositories
 
         }
 
-        public async Task<List<CityAttraction>> GetAllCA()
+        public override async Task<List<CityAttraction>> GetAll()
         {
             return await context.Set<CityAttraction>()
                 .Include(c => c.City)
-                .ToListAsync()
-                
-                
-                ;
+                .ToListAsync();
+        }
 
-
+        public override async Task<CityAttraction> Get(int? id)
+        {
+            return await context.Set<CityAttraction>().FindAsync(id);
         }
 
 
-
-        public async Task<CityAttraction> AddCA(CityAttraction entity)
+        public override async Task<CityAttraction> Add(CityAttraction entity)
         {
             context.Set<CityAttraction>().Add(entity);
             await context.SaveChangesAsync();
             return entity;
         }
+
+        //public override async Task<IActionResult> Update(int? id)
+        //{
+        //    if(id != )
+
+
+        //}
+
+
 
 
     }
