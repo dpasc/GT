@@ -10,7 +10,7 @@ namespace Domain.Data
 
     public class GTContext : DbContext
     {
-        private string _connectionString;
+        //private string _connectionString;
 
         public GTContext(DbContextOptions<GTContext> options) : base(options)
         {
@@ -18,20 +18,20 @@ namespace Domain.Data
         }
 
 
-        public GTContext()
-        {
+        //public GTContext()
+        //{
 
-            var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("appsettings.json", optional: false);
-            var configuration = builder.Build();
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
+        //    var builder = new ConfigurationBuilder();
+        //    builder.AddJsonFile("appsettings.json", optional: false);
+        //    var configuration = builder.Build();
+        //    _connectionString = configuration.GetConnectionString("DefaultConnection");
+        //}
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder o)
-        {
-            o.UseSqlServer(_connectionString);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder o)
+        //{
+        //    o.UseSqlServer(_connectionString);
+        //}
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -94,6 +94,7 @@ namespace Domain.Data
             b.Entity<TravelPackageCityAttraction>()
            .HasOne(tpca => tpca.CityAttraction)
            .WithMany(ca => ca.TravelPackageCityAttractions);
+       
 
             b.Entity<TravelPackageCityAttraction>()
                  .HasOne(tpca => tpca.TravelPackageCity)
@@ -145,6 +146,7 @@ namespace Domain.Data
         public DbSet<CustomerTravelPackage> CustomerTravelPackages { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<TravelProvider> TravelProviders { get; set; }
         public DbSet<TravelPackage> TravelPackages { get; set; }
         public DbSet<TravelPackageCity> TravelPackageCities { get; set; }
         public DbSet<TravelPackageCityAttraction> TravelPackageCityAttractions { get; set; }

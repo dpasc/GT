@@ -157,3 +157,8 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Purchase\Vi
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Purchase\Views\_ViewStart.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\_ViewImports.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\_ViewStart.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackage\Index.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Index.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Create.cshtml.g.cs

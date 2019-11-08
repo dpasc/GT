@@ -1,5 +1,6 @@
 ﻿using Library.Models;
 using Library.Models.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,20 @@ namespace Domain.Data.MainRepository.Repositories
         {
 
         }
+
+        public async Task<List<CityAttraction>> GetAllCA()
+        {
+            return await context.Set<CityAttraction>()
+                .Include(c => c.City)
+                .ToListAsync()
+                
+                
+                ;
+
+
+        }
+
+
 
         public async Task<CityAttraction> AddCA(CityAttraction entity)
         {

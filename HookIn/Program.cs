@@ -18,11 +18,11 @@ namespace HookIn
         static void Main(string[] args)
        {
 
-            var gTContext = new GTContext();
+            //var gTContext = new GTContext();
 
             //var car = new CityAttractionsRepository(gTContext);
             //var peo = new PersonRepository(gTContext);
-            var tpc = new TravelPackageCityRepository(gTContext);
+            //var tpc = new TravelPackageCityRepository(gTContext);
 
 
 
@@ -45,8 +45,8 @@ namespace HookIn
             //New TravelPackage
             //Task.Run(async () => { await tpc.AddTPC(1,1012850542, 2); });
 
-            var otpc = gTContext.TravelPackageCities.FirstOrDefault();
-            Console.WriteLine(otpc.City.Name);
+            //var otpc = gTContext.TravelPackageCities.FirstOrDefault();
+            //Console.WriteLine(otpc.City.Name);
 
 
 

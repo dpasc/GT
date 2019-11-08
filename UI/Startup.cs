@@ -32,9 +32,9 @@ namespace UI
 
 
             //Context
-            //services.AddDbContext<GTContext>(options =>
-            //options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<GTContext>(options =>
+            options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
