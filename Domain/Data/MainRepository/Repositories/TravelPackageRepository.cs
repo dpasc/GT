@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Data.MainRepository.Repositories
 {
-    public class TravelPackagesRepository: MainRepository<TravelPackage,GTContext>
+    public class TravelPackageRepository: MainRepository<TravelPackage,GTContext>
     {
-        public TravelPackagesRepository(GTContext context):base(context)
+        public TravelPackageRepository(GTContext context):base(context)
         {
 
         }

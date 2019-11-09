@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Data.MainRepository.Repositories;
+using Library.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UI.Areas.Staff.Controllers
@@ -19,9 +20,26 @@ namespace UI.Areas.Staff.Controllers
 
 
 
-        public async  Task<IActionResult> Index()
+        public async  Task<IActionResult> Index(int id)
         {
-            return View(await _tpcr.GetAll());
+            return View(await _tpcr.GetAllInTP(id));
         }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(TravelPackageCity travelPackageCity)
+        {
+            await _tpcr.Add(travelPackageCity);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
     }
 }

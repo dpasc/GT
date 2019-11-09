@@ -10,18 +10,24 @@ namespace UI.Areas.Staff.Controllers
     [Area("Staff")]
     public class TravelPackageCityAttractionsController : Controller
     {
-        private readonly TravelPackageCityRepository _tpcar;
+        private readonly TravelPackageCityAttractionsRepository _tpcar;
 
-        public TravelPackageCityAttractionsController(TravelPackageCityRepository tpcar)
+        public TravelPackageCityAttractionsController(TravelPackageCityAttractionsRepository tpcar)
         {
             _tpcar = tpcar;
         }
 
 
-
-        public IActionResult Index()
+    
+        public async Task<IActionResult> Index(int id)
         {
-            return View( _tpcar.GetAll());
+            return View(await _tpcar.GetListForTPC(id));
+        }
+
+        [HttpGet]
+        public IActionResult Create(int id)
+        {
+            return View(id);
         }
 
 

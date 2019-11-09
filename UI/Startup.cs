@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using UI.Data;
@@ -40,10 +36,13 @@ namespace UI
                     Configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories 
+            services.AddScoped<TravelPackageRepository>();
+            services.AddScoped<TravelPackageCityAttractionsRepository>();
+            services.AddScoped<TravelPackageCityRepository>();
             services.AddScoped<TravelProviderRepository>();
             services.AddScoped<CityAttractionsRepository>();
             services.AddScoped<PersonRepository>();
-            services.AddScoped<TravelPackageCityRepository>();
+
 
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

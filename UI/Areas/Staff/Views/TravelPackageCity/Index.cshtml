@@ -4,7 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Travel Package City</h1>
+<h2>
+    @Html.DisplayFor(model => model.FirstOrDefault().TravelPackage.Name)
+    </h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -25,23 +28,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TravelPackage.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfDays)
-            </td>
-            <td>
-                @Html.ActionLink("Update", "Update", new {  id=item.Id  }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelPackage.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfDays)
+                </td>
+                <td>
+                    @Html.ActionLink("City Attractions", "Index", "TravelPackageCityAttractions", new { id = item.Id })|
+                    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
