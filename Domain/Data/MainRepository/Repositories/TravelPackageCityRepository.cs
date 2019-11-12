@@ -30,6 +30,12 @@ namespace Domain.Data.MainRepository.Repositories
 
         //}
 
+        public async override Task<TravelPackageCity> Get(int? id)
+        {
+            return await context.Set<TravelPackageCity>()
+                .FirstOrDefaultAsync(tpc => tpc.Id == id);
+        }
+
 
         public async override Task<List<TravelPackageCity>> GetAll()
         {

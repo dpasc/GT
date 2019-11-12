@@ -18,6 +18,12 @@ namespace UI.Api
 
         }
 
+        //// GET: api/Test/5
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return id.ToString();
+        //}
 
 
 

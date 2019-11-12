@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,9 +24,21 @@ namespace Domain.Data.MainRepository.Repositories
                 .ToListAsync();
         }
 
-        public override async Task<CityAttraction> Get(int? id)
+        public async Task<List<CityAttraction>> GetAllWithCityId(int? id)
         {
-            return await context.Set<CityAttraction>().FindAsync(id);
+          return await  context.Set<CityAttraction>()
+                .Include(c => c.City)
+                .Where(c => c.City.Id == id)
+                .ToListAsync();
+        }
+
+
+        public async Task<CityAttraction> GetCA(int? id)
+        {
+            id = 9;
+            return await context.Set<CityAttraction>()
+                .FirstOrDefaultAsync(ca => ca.Id == id);
+                
         }
 
 
@@ -36,12 +49,7 @@ namespace Domain.Data.MainRepository.Repositories
             return entity;
         }
 
-        //public override async Task<IActionResult> Update(int? id)
-        //{
-        //    if(id != )
 
-
-        //}
 
 
 

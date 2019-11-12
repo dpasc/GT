@@ -2,13 +2,15 @@
 
 @{
     ViewData["Title"] = "Index";
+    int tpId = Model.FirstOrDefault().TravelPackageCityId;
 }
 
 <h1>City Attractions </h1>
+
 <h2>@Html.DisplayFor(model => model.FirstOrDefault().TravelPackageCity.City.Name)</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Add Attraction", "Create", new {  id=tpId })
 </p>
 <table class="table">
     <thead>

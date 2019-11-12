@@ -16,7 +16,7 @@ namespace HookIn
     {
 
         static void Main(string[] args)
-       {
+        {
 
             //var gTContext = new GTContext();
 
@@ -26,27 +26,50 @@ namespace HookIn
 
 
 
-            //City Attraction
+
 
             //Create City Attraction
             //CityAttraction ca = new CityAttraction()
             //{
             //    Name = "Zoo",
             //    Description = "Checkout the animals",
-            //    CityId = 1036842122
+            //    CityId = 1036007778
 
             //};
-            //Task.Run(async () => { await car.AddCA(ca); });
+            //Task.Run(async () => { await car.Add(ca); });
 
-            ////Create new Customer 
+
+            //Get CA
+
+
+            //var checkCa2 = gTContext.CityAttractions.FirstOrDefault(ca => ca.Id == 9);
+
+
+            //var ca = new CityAttraction();
+
+            
+
+            //Task.Run(async () => {  ca = await car.GetCA(7); });
+
+
+            //Console.WriteLine(ca.Name);
+
+
+
+            //Create new Customer 
 
             //Task.Run(async () => { await peo.AddEmployee("Sam", "Smith"); });
 
             //New TravelPackage
-            //Task.Run(async () => { await tpc.AddTPC(1,1012850542, 2); });
+            //Task.Run(async () => { await tpc.AddTPC(1, 1012850542, 2); });
 
             //var otpc = gTContext.TravelPackageCities.FirstOrDefault();
             //Console.WriteLine(otpc.City.Name);
+
+            //var travelPackageCity = tpc.Get(3);
+
+
+            //Console.WriteLine(travelPackageCity.Id);
 
 
 

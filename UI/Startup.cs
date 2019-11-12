@@ -31,16 +31,18 @@ namespace UI
             services.AddDbContext<GTContext>(options =>
             options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories 
+            services.AddScoped<CityAttractionsRepository>();
             services.AddScoped<TravelPackageRepository>();
             services.AddScoped<TravelPackageCityAttractionsRepository>();
             services.AddScoped<TravelPackageCityRepository>();
             services.AddScoped<TravelProviderRepository>();
-            services.AddScoped<CityAttractionsRepository>();
+
             services.AddScoped<PersonRepository>();
 
 

@@ -40,7 +40,7 @@ namespace Domain.Data.MainRepository
 
         public virtual async Task<TEntity> Get(int? id)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            return await context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
         public virtual async Task<List<TEntity>> GetAll()
