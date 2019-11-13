@@ -22,7 +22,7 @@ namespace Domain.Data.MainRepository.Repositories
                  .Where(tpca => tpca.TravelPackageCityId == tpcId)
                  .Include(tpca => tpca.CityAttraction)
                  .Include(tpca => tpca.TravelPackageCity.City)    
-                .ToListAsync();
+                 .ToListAsync();
         }
 
         public async Task<List<CityAttraction>> GetListForOfCAForIndex(int id)

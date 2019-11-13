@@ -24,10 +24,8 @@ namespace UI.Areas.Staff.Controllers
         }
     
         public async Task<IActionResult> Index(int id)
-        {
-            
+        {         
             return View(await _tpcar.GetListForTPC(id));
-
         }
 
         [HttpGet]
@@ -35,13 +33,19 @@ namespace UI.Areas.Staff.Controllers
         {
             var tpca = new TravelPackageCityAttraction();
             tpca.TravelPackageCityId = id;
-     
-
             var caList = await  _tpcar.GetListForOfCAForIndex(id);
 
             ViewData["CityAttractions"] = new SelectList(caList, "Id", "Name");
-
             return View(tpca);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(TravelPackageCityAttraction travelPackageCityAttraction)
+        {
+            await  _tpcar.Add(travelPackageCityAttraction);
+            return RedirectToAction("Index");
+
         }
 
 

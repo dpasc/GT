@@ -132,10 +132,11 @@ namespace Domain.Migrations
                     TravelPackageCityId = table.Column<int>(nullable: false),
                     CityAttractionId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TravelPackageCityAttractions", x => x.Id);
+                    table.PrimaryKey("PK_TravelPackageCityAttractions", x => new { x.CityAttractionId, x.TravelPackageCityId });
                     table.ForeignKey(
                         name: "FK_TravelPackageCityAttractions_CityAttractions_CityAttractionId",
                         column: x => x.CityAttractionId,
