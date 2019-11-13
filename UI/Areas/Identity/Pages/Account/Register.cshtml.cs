@@ -66,6 +66,10 @@ namespace UI.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [Required]
+            public string Forename { get; set; }
+            [Required]
+            public string Surname { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -84,14 +88,17 @@ namespace UI.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    var customer = new Customer { };
-                    //assign properties, including Identity User Id to customer
+                    var customer = new Library.Models.Models.Customer
+                    {
+                        Forename = Input.Forename,
+                        Surname = Input.Surname,
+                        UserId = user.Id
+                    };
                     _gTContext.People.Add(customer);
                     _gTContext.SaveChanges();
 
-                    //add user to the Customer role
+                    await _userManager.AddToRoleAsync(user, "Customer");
+                    _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -108,6 +115,7 @@ namespace UI.Areas.Identity.Pages.Account
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
                     }
+
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);

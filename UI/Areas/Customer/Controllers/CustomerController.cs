@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace UI.Areas.Purchase.Controllers
+namespace UI.Areas.Customer.Controllers
 {
-    [Area("Purchase")]
-    public class PurchaseController : Controller
+    public class CustomerController : Controller
     {
+        [Area("Customer")]
         public IActionResult Index()
         {
             return View();

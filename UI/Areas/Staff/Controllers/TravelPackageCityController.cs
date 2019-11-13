@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Data.MainRepository.Repositories;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UI.Areas.Staff.Controllers
 {
@@ -19,16 +20,21 @@ namespace UI.Areas.Staff.Controllers
         }
 
 
-
         public async  Task<IActionResult> Index(int id)
         {
+            ViewBag.TravelPackage = _tpcr.context.TravelPackages
+                .First(tp => tp.Id == id);
             return View(await _tpcr.GetAllInTP(id));
         }
 
-
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int tpId)
         {
+
+            ViewBag.TravelPackage = _tpcr.context.TravelPackages
+                .First(tp => tp.Id == tpId);
+            ViewData["Cities"] = new SelectList(_tpcr.context.Cities
+                .OrderBy(tpcr => tpcr.Name), "Id", "Name");
             return View();
         }
 

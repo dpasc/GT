@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(GTContext))]
-    [Migration("20191112231815_second")]
-    partial class second
+    [Migration("20191113045424_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -352,7 +352,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.City", "City")
                         .WithMany("Attractions")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -361,19 +361,19 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.Customer", "Customer")
                         .WithMany("TravelPackages")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackage", "TravelPackage")
                         .WithMany()
                         .HasForeignKey("TravelPackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.Voucher", "Voucher")
                         .WithMany()
                         .HasForeignKey("VoucherId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -382,7 +382,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.CustomerTravelPackage", "CustomerTravelPackage")
                         .WithMany("Payments")
                         .HasForeignKey("CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -391,13 +391,13 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackage", "TravelPackage")
                         .WithMany("Cities")
                         .HasForeignKey("TravelPackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -406,13 +406,13 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.CityAttraction", "CityAttraction")
                         .WithMany("TravelPackageCityAttractions")
                         .HasForeignKey("CityAttractionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackageCity", "TravelPackageCity")
                         .WithMany("TravelPackageCityAttractions")
                         .HasForeignKey("TravelPackageCityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -421,7 +421,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.Customer", "Customer")
                         .WithMany("Vouchers")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -430,7 +430,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.TravelProvider", "TravelProvider")
                         .WithMany()
                         .HasForeignKey("TravelProviderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

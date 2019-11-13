@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Domain.Data.MainRepository.Repositories;
 using Domain.Data;
+using System;
 
 namespace UI
 {
@@ -31,10 +32,14 @@ namespace UI
             services.AddDbContext<GTContext>(options =>
             options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn
+                .RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
 
             //Repositories 
             services.AddScoped<CityAttractionsRepository>();
@@ -42,15 +47,25 @@ namespace UI
             services.AddScoped<TravelPackageCityAttractionsRepository>();
             services.AddScoped<TravelPackageCityRepository>();
             services.AddScoped<TravelProviderRepository>();
-
             services.AddScoped<PersonRepository>();
 
-
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+           
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Lockout settings.
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(0);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+                options.Password.RequiredLength = 1;
+                options.Password.RequireDigit = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -48,10 +48,10 @@ namespace Domain.Data.MainRepository.Repositories
         public async Task<List<TravelPackageCity>> GetAllInTP(int tpId)
         {
             return await context.Set<TravelPackageCity>()
-                .Where(tpc => tpc.TravelPackageId == tpId)
                 .Include(tpc => tpc.City)
                 .Include(tpc => tpc.TravelPackage)
-               .ToListAsync();
+                .Where(tpc => tpc.TravelPackageId == tpId)
+                    .ToListAsync();
         }
 
 

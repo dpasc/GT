@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Threading.Tasks;
 using Domain.Data.MainRepository.Repositories;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UI.Areas.Staff.Controllers
 {
     //ToDo: Fix status/ status id bug in update
 
-
+    [Authorize(Roles = "Administrator")]
     [Area("Staff")]
     public class TravelPackageController : Controller
     {
