@@ -1,8 +1,8 @@
 C:\Users\Damian\Desktop\GT\GT\Domain\bin\Debug\netcoreapp3.0\Domain.deps.json
 C:\Users\Damian\Desktop\GT\GT\Domain\bin\Debug\netcoreapp3.0\Domain.dll
 C:\Users\Damian\Desktop\GT\GT\Domain\bin\Debug\netcoreapp3.0\Domain.pdb
+C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.csprojAssemblyReference.cache
 C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.AssemblyInfoInputs.cache
 C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.AssemblyInfo.cs
 C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.dll
 C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.pdb
-C:\Users\Damian\Desktop\GT\GT\Domain\obj\Debug\netcoreapp3.0\Domain.csprojAssemblyReference.cache

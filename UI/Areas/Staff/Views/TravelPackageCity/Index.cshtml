@@ -37,9 +37,9 @@
                     @Html.DisplayFor(modelItem => item.NumberOfDays)
                 </td>
                 <td>
-                    @Html.ActionLink("City Attractions", "Index", "TravelPackageCityAttractions", new { id = item.Id })|
-                    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("TP City Attractions", "Index", "TravelPackageCityAttractions", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.Id }) 
 
                 </td>
             </tr>

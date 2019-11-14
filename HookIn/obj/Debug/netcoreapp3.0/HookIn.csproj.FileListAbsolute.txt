@@ -11,6 +11,11 @@ C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\HookIn.runtimeconfi
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\HookIn.runtimeconfig.dev.json
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\HookIn.dll
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\HookIn.pdb
+C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Google.Apis.dll
+C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Google.Apis.Admin.Directory.directory_v1.dll
+C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Google.Apis.Auth.dll
+C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Google.Apis.Core.dll
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Damian\Desktop\GT\GT\HookIn\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
