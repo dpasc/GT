@@ -2,15 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
-    int tpId = Model.FirstOrDefault().TravelPackageCityId;
+    var tpc = (Library.Models.Models.TravelPackageCity)ViewBag.TravelPackageCity;
+
 }
 
 <h1>City Attractions </h1>
 
-<h2>@Html.DisplayFor(model => model.FirstOrDefault().TravelPackageCity.City.Name)</h2>
+
 
 <p>
-    @Html.ActionLink("Add Attraction", "Create", new {  id=tpId })
+    <a asp-action="Create" asp-route-tpcId="@tpc.Id">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -40,8 +41,7 @@
                 @Html.DisplayFor(modelItem => item.CityAttraction.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |  
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

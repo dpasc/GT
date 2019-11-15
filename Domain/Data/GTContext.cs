@@ -84,12 +84,10 @@ namespace Domain.Data
                 .HasKey(tpc => tpc.Id);
 
             //Config Concatenate key for travel package city attraction
+
+
             b.Entity<TravelPackageCityAttraction>()
-                .HasKey(tpca => new
-                {
-                    tpca.CityAttractionId,
-                    tpca.TravelPackageCityId
-                });
+                .HasKey(tpca => tpca.Id);
 
             b.Entity<TravelPackageCityAttraction>()
            .HasOne(tpca => tpca.CityAttraction)

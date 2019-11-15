@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace UI.Areas.Staff.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     [Area("Staff")]
     public class StaffController : Controller
     {

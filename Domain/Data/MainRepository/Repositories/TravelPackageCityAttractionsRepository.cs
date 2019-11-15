@@ -16,13 +16,21 @@ namespace Domain.Data.MainRepository.Repositories
 
         }
 
+        public override async Task<TravelPackageCityAttraction> Get(int? id)
+        {
+            return await context.Set<TravelPackageCityAttraction>()
+                .Include(tcpa => tcpa.TravelPackageCity.City)
+                .FirstOrDefaultAsync(entity => entity.Id == id);
+        }
+
         public async Task<List<TravelPackageCityAttraction>> GetListForTPC(int tpcId)
         {
             return await context.Set<TravelPackageCityAttraction>()
+                 .Include(tpca => tpca.TravelPackageCity)
                  .Where(tpca => tpca.TravelPackageCityId == tpcId)
                  .Include(tpca => tpca.CityAttraction)
                  .Include(tpca => tpca.TravelPackageCity.City)    
-                 .ToListAsync();
+                    .ToListAsync();
         }
 
         public async Task<List<CityAttraction>> GetListForOfCAForIndex(int id)

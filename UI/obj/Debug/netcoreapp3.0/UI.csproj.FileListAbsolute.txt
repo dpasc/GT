@@ -179,3 +179,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.Views.pdb
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.csproj.CopyComplete
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.dll
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.pdb
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Edit.cshtml.g.cs

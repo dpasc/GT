@@ -233,16 +233,20 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Library.Models.Models.TravelPackageCityAttraction", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("CityAttractionId")
                         .HasColumnType("int");
 
                     b.Property<int>("TravelPackageCityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("CityAttractionId", "TravelPackageCityId");
+                    b.HasIndex("CityAttractionId");
 
                     b.HasIndex("TravelPackageCityId");
 
@@ -350,7 +354,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.City", "City")
                         .WithMany("Attractions")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -359,19 +363,19 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.Customer", "Customer")
                         .WithMany("TravelPackages")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackage", "TravelPackage")
                         .WithMany()
                         .HasForeignKey("TravelPackageId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.Voucher", "Voucher")
                         .WithMany()
                         .HasForeignKey("VoucherId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -380,7 +384,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.CustomerTravelPackage", "CustomerTravelPackage")
                         .WithMany("Payments")
                         .HasForeignKey("CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -389,13 +393,13 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackage", "TravelPackage")
                         .WithMany("Cities")
                         .HasForeignKey("TravelPackageId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -404,13 +408,13 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.CityAttraction", "CityAttraction")
                         .WithMany("TravelPackageCityAttractions")
                         .HasForeignKey("CityAttractionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Models.Models.TravelPackageCity", "TravelPackageCity")
                         .WithMany("TravelPackageCityAttractions")
                         .HasForeignKey("TravelPackageCityId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -419,7 +423,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.Customer", "Customer")
                         .WithMany("Vouchers")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -428,7 +432,7 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.TravelProvider", "TravelProvider")
                         .WithMany()
                         .HasForeignKey("TravelProviderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,7 +41,8 @@ namespace Domain.Data.MainRepository
 
         public virtual async Task<TEntity> Get(int? id)
         {
-            return await context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id == id);
+            return await context.Set<TEntity>()
+                .FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
         public virtual async Task<List<TEntity>> GetAll()
@@ -50,7 +52,15 @@ namespace Domain.Data.MainRepository
 
         public virtual async Task<TEntity> Update(TEntity entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            //context.Entry(entity).State = EntityState.Modified;
+            try
+            {
+                context.Update(entity);
+            }
+            catch
+            {
+                
+            }
             await context.SaveChangesAsync();
             return entity;
         }

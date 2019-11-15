@@ -129,14 +129,14 @@ namespace Domain.Migrations
                 name: "TravelPackageCityAttractions",
                 columns: table => new
                 {
-                    TravelPackageCityId = table.Column<int>(nullable: false),
-                    CityAttractionId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false)
-                    .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TravelPackageCityId = table.Column<int>(nullable: false),
+                    CityAttractionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TravelPackageCityAttractions",  x => x.Id );
+                    table.PrimaryKey("PK_TravelPackageCityAttractions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TravelPackageCityAttractions_CityAttractions_CityAttractionId",
                         column: x => x.CityAttractionId,
@@ -269,6 +269,11 @@ namespace Domain.Migrations
                 name: "IX_TravelPackageCities_TravelPackageId",
                 table: "TravelPackageCities",
                 column: "TravelPackageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TravelPackageCityAttractions_CityAttractionId",
+                table: "TravelPackageCityAttractions",
+                column: "CityAttractionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TravelPackageCityAttractions_TravelPackageCityId",
