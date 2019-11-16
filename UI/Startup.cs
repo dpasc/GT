@@ -48,6 +48,7 @@ namespace UI
             services.AddScoped<TravelPackageCityRepository>();
             services.AddScoped<TravelProviderRepository>();
             services.AddScoped<PersonRepository>();
+            services.AddScoped<CustomerRepository>();
 
            
             services.AddControllersWithViews();

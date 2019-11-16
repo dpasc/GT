@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Library.Models.Models.Search
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="container">
@@ -49,69 +51,27 @@
     <hr />
     <!--Form and Table-->
     <div class="row">
-        <div class="col-sm-12 col-md-6 ml-sm-4">
-            <h2 class="h2">Search Packages</h2>
-            <table class="table border-right">
-                <tr>
-                    <h4 class="h4">Departing From</h4>
-                    <div class="dropdown ">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="trufe" aria-expanded="false">
-                            --Locations--
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Sydeny</a>
-                            <a class="dropdown-item" href="#">London</a>
-                            <a class="dropdown-item" href="#">New York</a>
-                        </div>
-                    </div>
-                </tr>
-                <tr>
-                    <td>
-                        <h4 class="h4">From</h4>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="trufe" aria-expanded="false">
-                                --From--
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Sydeny</a>
-                                <a class="dropdown-item" href="#">London</a>
-                                <a class="dropdown-item" href="#">New York</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <h4 class="h4">Till</h4>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="trufe" aria-expanded="false">
-                                --Till--
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Sydeny</a>
-                                <a class="dropdown-item" href="#">London</a>
-                                <a class="dropdown-item" href="#">New York</a>
-                            </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4 class="h4">
-                            Travellers
-                        </h4>
-                        <input class="input-group-text" type="number" />
-                    </td>
-                    <td>
-                        <h4 class="h4">
-                            Stops
-                        </h4>
-                        <input class="input-group-text" type="number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="btn btn-md btn-info">Search Packages!</button>
-                    </td>
-                </tr>
-            </table>
+        <div class="col-sm-12 col-md-4 ml-sm-4 p-2" style="border:solid 1px gray">
+            <form asp-controller="Home" asp-action="Search">
+
+                <h3 class="h3">Search Packages</h3>
+                <hr />
+                <div class="form-group">
+                    <input class="form-control" type="text" asp-for="TpNameQuery"/>
+                </div>
+                <hr />
+
+                <h3 class="h3">Search By Location</h3>
+                <div class="form-group">
+                    <input class="form-control" type="text" asp-for="TpLocationQuery" />
+                </div>
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </form>
+
+
+
+
+
         </div>
         <div class="col-6">
             <h2 class="h2">Join Our Mailing List</h2>
@@ -167,7 +127,7 @@
                 </table>
             </div>
     <hr />
-
+</div>
 <!--Cards-->
 <div class="row">
     <div class="col-sm-12 col-md-4">

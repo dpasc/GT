@@ -58,12 +58,10 @@ namespace UI.Areas.Staff.Controllers
             {
                 return NotFound();
             }
-
-            //  var caList = await _tpcar.GetListForOfCAForIndex(id);
+     
             var caList = await _tpcar.context.CityAttractions
                 .Where(ca => ca.CityId == travelPackageCityAttraction.TravelPackageCity.CityId)
                 .ToListAsync();
-
 
             ViewData["CityAttractions"] = new SelectList(caList, "Id", "Name");
             return View(travelPackageCityAttraction);
@@ -84,6 +82,40 @@ namespace UI.Areas.Staff.Controllers
             }
             return View(travelPackageCityAttraction);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var travalPackageCityAttraction = await _tpcar.Get(id);
+            if (travalPackageCityAttraction == null)
+            {
+                return NotFound();
+            }
+
+            return View(travalPackageCityAttraction);
+        }
+
+
+        [HttpDelete, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id, TravelPackageCityAttraction travelPackageCityAttraction)
+        {
+            if (id != travelPackageCityAttraction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                await _tpcar.Delete(travelPackageCityAttraction.Id);
+                return RedirectToAction(nameof(Index), new { Id = travelPackageCityAttraction.TravelPackageCityId });
+            }
+            //ToDo: Fix return back to index
+            //int v = travelPackageCityAttraction.TravelPackageCityId;
+            //ViewBag.TravelPackageCity = v;
+            return View(travelPackageCityAttraction);
+        }
+
 
     }
 }

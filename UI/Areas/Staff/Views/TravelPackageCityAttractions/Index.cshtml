@@ -13,6 +13,10 @@
 <p>
     <a asp-action="Create" asp-route-tpcId="@tpc.Id">Create New</a>
 </p>
+<br/>
+<p>
+    <a asp-controller="CityAttraction" asp-action="Index">Create New City Attraction</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -42,7 +46,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |  
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
 }

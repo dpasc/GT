@@ -69,6 +69,7 @@ namespace Domain.Data
             b.Entity<TravelPackage>()
                 .Property(tp => tp.StatusId)
                 .HasDefaultValueSql("1");
+       
 
             //Config Concatenate Key for Customer travel Package
             b.Entity<CustomerTravelPackage>()

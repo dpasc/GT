@@ -125,6 +125,7 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.AssemblyInfo.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.TagHelpers.input.cache
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.TagHelpers.output.cache
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.RazorCoreGenerate.cache
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\ConfirmPurchase.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Shared\Error.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Shared\_CookieConsentPartial.cshtml.g.cs
@@ -144,6 +145,8 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Update.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Create.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Delete.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Edit.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCity\Create.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCity\Delete.cshtml.g.cs
@@ -166,6 +169,7 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\_ViewStart.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Home\Search.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -179,4 +183,3 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.Views.pdb
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.csproj.CopyComplete
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.dll
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.pdb
-C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Edit.cshtml.g.cs
