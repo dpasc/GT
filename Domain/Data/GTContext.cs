@@ -69,21 +69,31 @@ namespace Domain.Data
             b.Entity<TravelPackage>()
                 .Property(tp => tp.StatusId)
                 .HasDefaultValueSql("1");
+                
        
+
+            //Config Key for Customer travel Package
+            b.Entity<CustomerTravelPackage>()
+                .HasKey(ctp =>  ctp.Id);
 
             //Config Concatenate Key for Customer travel Package
             b.Entity<CustomerTravelPackage>()
-                .HasKey(ctp => new { ctp.CustomerId, ctp.TravelPackageId });
+                .HasOne(ctp => ctp.TravelPackage);
 
+            b.Entity<CustomerTravelPackage>()
+                .HasOne(ctp => ctp.Customer)
+                .WithMany(c => c.TravelPackages);
+            
             ////Configure Non Mapped Properties for Travel Provider
             //b.Entity<TravelProvider>()
             //    .Ignore(tp => tp.Customers)
             //    .Ignore(tp => tp.Employees);
 
-            //Config Concatenate Key for Travel Package City
+            //Config Key for Travel Package City
             b.Entity<TravelPackageCity>()
                 .HasKey(tpc => tpc.Id);
 
+      
             //Config Concatenate key for travel package city attraction
 
 

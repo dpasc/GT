@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Library.Models.Models
 {
-    public class CustomerTravelPackage
+    public class CustomerTravelPackage : IEntity
     {
         public CustomerTravelPackage()
         {
             Payments = new List<Payment>();
         }
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public int TravelPackageId { get; set; }

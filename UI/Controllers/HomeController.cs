@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Data;
 using Library.Models.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -16,11 +17,15 @@ namespace UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly GTContext _gTContext;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger, GTContext gTContext)
+
+
+        public HomeController(ILogger<HomeController> logger, GTContext gTContext, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _gTContext = gTContext;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -42,6 +47,7 @@ namespace UI.Controllers
         [HttpPost]
         public IActionResult Search(Search search)
         {
+            
            
             if(!String.IsNullOrEmpty(search.TpNameQuery))
             {
@@ -59,10 +65,6 @@ namespace UI.Controllers
                 return View(travelPackages);                               
             }
                 return RedirectToAction("Index");
-            
-
-
-
            
         }
 

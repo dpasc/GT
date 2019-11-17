@@ -37,5 +37,32 @@ namespace UI.Areas.Customer.Controllers
             return View(tp);
         }
 
+        [HttpGet]
+        public IActionResult Purchase(int id,string paymentType)
+        {
+            if(paymentType == "bc")
+            {
+                ViewBag.PaymentType = "";
+            }
+            if(paymentType == "cc")
+            {
+
+            }
+            if(paymentType == "pp")
+            {
+
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Purchase()
+        {
+            return View();
+        }
+
+
+
     }
 }

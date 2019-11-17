@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Library.Models.Models
 {
-    public class Payment
+    public class Payment :IEntity
     {
         public int Id { get; set; }
         public int CustomerTravelPackageId { get; set; }
