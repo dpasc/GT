@@ -37,6 +37,9 @@ namespace UI.Areas.Customer.Controllers
             return View(tp);
         }
 
+
+
+
         [HttpGet]
         public IActionResult Purchase(int id,string paymentType)
         {

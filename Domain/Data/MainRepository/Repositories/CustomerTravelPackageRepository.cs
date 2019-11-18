@@ -14,10 +14,13 @@ namespace Domain.Data.MainRepository.Repositories
 
         }
 
-        public async Task<Person> GetCustomerByUserId(int id)
+        public async Task<Person> GetCustomerByUserId(string userId)
         {
-            return await context.Set<Person>()     
-                .FirstOrDefaultAsync(p => p.UserId == "{id}");
+            var person  = await context.Set<Person>()
+                .FirstOrDefaultAsync(p => p.UserId == userId);
+            return person;
+            
+
         }
 
         //public async Task<CustomerTravelPackage> Create(Customer customer, TravelPackage travelPackage)
