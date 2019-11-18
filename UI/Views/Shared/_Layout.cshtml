@@ -7,7 +7,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/pulse/bootstrap.min.css" rel="stylesheet" integrity="sha384-/uQFqO50IaQu2rNJYKPpV7zwsWJtd6V4DGX4wMw1ATz4KPuZEV96qQ2heVAw2kr2" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
-
 </head>
 <body>
     <header>
@@ -53,23 +52,27 @@
         </div>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 mb-3">
             @RenderBody()
         </main>
     </div>
     <br/>
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-3">
         <div class="container mt-3">
-            &copy; 2019 - Grande Travel | <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> |
-            <a asp-area="" asp-controller="Home" asp-action="Privacy">Terms & Conditions</a>
-
+          <div class="row">
+              <div class="col-sm-12 col-md-6">
+                  &copy; 2019 - Grande Travel | <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> |
+                  <a asp-area="" asp-controller="Home" asp-action="Privacy">Terms & Conditions</a>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                  <p>123 Smart St, Surry Hills, NSW 2000</p>
+              </div>
+        </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
