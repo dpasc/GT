@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(GTContext))]
-    [Migration("20191115003236_first")]
-    partial class first
+    [Migration("20191120234258_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,10 +84,12 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Library.Models.Models.CustomerTravelPackage", b =>
                 {
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("TravelPackageId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Feedback")
@@ -99,10 +101,15 @@ namespace Domain.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("TravelPackageId")
+                        .HasColumnType("int");
+
                     b.Property<int>("VoucherId")
                         .HasColumnType("int");
 
-                    b.HasKey("CustomerId", "TravelPackageId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("TravelPackageId");
 
@@ -121,13 +128,7 @@ namespace Domain.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CustomerTravelPackageCustomerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CustomerTravelPackageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerTravelPackageTravelPackageId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateTime")
@@ -141,7 +142,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId");
+                    b.HasIndex("CustomerTravelPackageId");
 
                     b.ToTable("Payments");
 
@@ -385,7 +386,7 @@ namespace Domain.Migrations
                 {
                     b.HasOne("Library.Models.Models.CustomerTravelPackage", "CustomerTravelPackage")
                         .WithMany("Payments")
-                        .HasForeignKey("CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId")
+                        .HasForeignKey("CustomerTravelPackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

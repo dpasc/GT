@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Domain.Migrations
 {
-    public partial class first : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,7 +60,7 @@ namespace Domain.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     CityId = table.Column<int>(nullable: false)
                 },
@@ -142,13 +142,13 @@ namespace Domain.Migrations
                         column: x => x.CityAttractionId,
                         principalTable: "CityAttractions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TravelPackageCityAttractions_TravelPackageCities_TravelPackageCityId",
                         column: x => x.TravelPackageCityId,
                         principalTable: "TravelPackageCities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,16 +178,18 @@ namespace Domain.Migrations
                 name: "CustomerTravelPackages",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(nullable: false),
                     TravelPackageId = table.Column<int>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     SalePrice = table.Column<decimal>(nullable: false),
                     Feedback = table.Column<string>(nullable: true),
-                    VoucherId = table.Column<int>(nullable: false)
+                    VoucherId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerTravelPackages", x => new { x.CustomerId, x.TravelPackageId });
+                    table.PrimaryKey("PK_CustomerTravelPackages", x => x.Id);
                     table.ForeignKey(
                         name: "FK_CustomerTravelPackages_People_CustomerId",
                         column: x => x.CustomerId,
@@ -215,8 +217,6 @@ namespace Domain.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerTravelPackageId = table.Column<int>(nullable: false),
-                    CustomerTravelPackageCustomerId = table.Column<int>(nullable: false),
-                    CustomerTravelPackageTravelPackageId = table.Column<int>(nullable: false),
                     DateTime = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
                     Amount = table.Column<decimal>(nullable: false),
                     PaymentType = table.Column<string>(nullable: false),
@@ -228,17 +228,22 @@ namespace Domain.Migrations
                 {
                     table.PrimaryKey("PK_Payments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Payments_CustomerTravelPackages_CustomerTravelPackageCustomerId_CustomerTravelPackageTravelPackageId",
-                        columns: x => new { x.CustomerTravelPackageCustomerId, x.CustomerTravelPackageTravelPackageId },
+                        name: "FK_Payments_CustomerTravelPackages_CustomerTravelPackageId",
+                        column: x => x.CustomerTravelPackageId,
                         principalTable: "CustomerTravelPackages",
-                        principalColumns: new[] { "CustomerId", "TravelPackageId" },
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CityAttractions_CityId",
                 table: "CityAttractions",
                 column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CustomerTravelPackages_CustomerId",
+                table: "CustomerTravelPackages",
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CustomerTravelPackages_TravelPackageId",
@@ -251,9 +256,9 @@ namespace Domain.Migrations
                 column: "VoucherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_CustomerTravelPackageCustomerId_CustomerTravelPackageTravelPackageId",
+                name: "IX_Payments_CustomerTravelPackageId",
                 table: "Payments",
-                columns: new[] { "CustomerTravelPackageCustomerId", "CustomerTravelPackageTravelPackageId" });
+                column: "CustomerTravelPackageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_People_TravelProviderId",

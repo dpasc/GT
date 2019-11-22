@@ -19,9 +19,9 @@ namespace Library.Models.Models
         public DateTime StartDate { get; set; }
         public decimal SalePrice { get; set; }
         public string Feedback { get; set; }
-
-        public int VoucherId { get; set; }
-        public Voucher Voucher { get; set; }
+        //ToDo: Add at later stage
+        //public int VoucherId { get; set; }
+        //public Voucher Voucher { get; set; }
         public List<Payment> Payments { get; set; }
     }
 }

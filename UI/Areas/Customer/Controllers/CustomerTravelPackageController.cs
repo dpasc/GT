@@ -23,28 +23,27 @@ namespace UI.Areas.Customer.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(TravelPackage travelPackage)
+        public async Task<IActionResult> Index(TravelPackage travelPackage)
         {
-            return View(travelPackage);
-        }
-
-
-
-
-        [HttpPost,]
-        public async Task<IActionResult> IndexSend(TravelPackage travelPackage)
-        {
-        
             Person customer = await _ctpr.GetCustomerByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var cpa = new CustomerTravelPackage();
             cpa.CustomerId = customer.Id;
             cpa.TravelPackageId = travelPackage.Id;
             cpa.SalePrice = travelPackage.RRP;
             cpa.StartDate = DateTime.Now;
+            cpa.Id = 0;
+            return View(cpa);
+        }
 
-             await _ctpr.Add(cpa);
 
-            return View(customer);
+
+
+        [HttpPost, ActionName("Index")]
+        public async Task<IActionResult> IndexSend(CustomerTravelPackage cpa)
+        {
+            cpa.Id = 0;
+            await _ctpr.Add(cpa);
+            return View(cpa);
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(GTContext))]
-    [Migration("20191117000333_second")]
-    partial class second
+    [Migration("20191122013908_removeVouchers")]
+    partial class removeVouchers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,16 +104,11 @@ namespace Domain.Migrations
                     b.Property<int>("TravelPackageId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VoucherId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("TravelPackageId");
-
-                    b.HasIndex("VoucherId");
 
                     b.ToTable("CustomerTravelPackages");
                 });
@@ -288,9 +283,7 @@ namespace Domain.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Expires")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("DATEADD(month, 3, GETDATE())");
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Valid")
                         .HasColumnType("bit");
@@ -299,7 +292,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Vouchers");
+                    b.ToTable("Voucher");
                 });
 
             modelBuilder.Entity("Library.Models.Models.BitcoinPayment", b =>
@@ -372,12 +365,6 @@ namespace Domain.Migrations
                     b.HasOne("Library.Models.Models.TravelPackage", "TravelPackage")
                         .WithMany()
                         .HasForeignKey("TravelPackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Library.Models.Models.Voucher", "Voucher")
-                        .WithMany()
-                        .HasForeignKey("VoucherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

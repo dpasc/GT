@@ -20,13 +20,24 @@ namespace UI
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                });
+            });
 
             //Context
             services.AddDbContext<GTContext>(options =>
@@ -52,14 +63,12 @@ namespace UI
             services.AddScoped<PaymentRepository>();
             services.AddScoped<CustomerTravelPackageRepository>();
 
-           
             services.AddControllersWithViews();
             services.AddRazorPages();
 
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Lockout settings.
-
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(0);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
@@ -68,6 +77,7 @@ namespace UI
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireLowercase = false;
+                options.SignIn.RequireConfirmedEmail = false;
             });
         }
 
@@ -85,6 +95,7 @@ namespace UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

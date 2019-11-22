@@ -69,13 +69,13 @@ namespace Domain.Data
             b.Entity<TravelPackage>()
                 .Property(tp => tp.StatusId)
                 .HasDefaultValueSql("1");
-                
-       
+
+
 
             //Config Key for Customer travel Package
             b.Entity<CustomerTravelPackage>()
-                .HasKey(ctp =>  ctp.Id);
-
+                .HasKey(ctp => ctp.Id);
+               
             //Config Concatenate Key for Customer travel Package
             b.Entity<CustomerTravelPackage>()
                 .HasOne(ctp => ctp.TravelPackage);
@@ -141,11 +141,11 @@ namespace Domain.Data
                 .Property(p => p.DateTime)
                 .HasDefaultValueSql("getdate()");
 
-
-            //Configure Voucher Generated Value (Expires)
-            b.Entity<Voucher>()
-                .Property(v => v.Expires)
-                .HasDefaultValueSql("DATEADD(month, 3, GETDATE())");
+            //To be added at a later stage
+            ////Configure Voucher Generated Value (Expires)
+            //b.Entity<Voucher>()
+            //    .Property(v => v.Expires)
+            //    .HasDefaultValueSql("DATEADD(month, 3, GETDATE())");
 
         }
         
@@ -159,7 +159,7 @@ namespace Domain.Data
         public DbSet<TravelPackage> TravelPackages { get; set; }
         public DbSet<TravelPackageCity> TravelPackageCities { get; set; }
         public DbSet<TravelPackageCityAttraction> TravelPackageCityAttractions { get; set; }
-        public DbSet<Voucher> Vouchers { get; set; }
+        //public DbSet<Voucher> Vouchers { get; set; }
 
     }
 }

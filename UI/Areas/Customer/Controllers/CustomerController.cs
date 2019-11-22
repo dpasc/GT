@@ -28,7 +28,7 @@ namespace UI.Areas.Customer.Controllers
         [HttpGet]
         public IActionResult ConfirmPurchase(int id)
         {
-            id = 1;
+          
             if(id == 0)
             {
                 return NotFound();
@@ -41,7 +41,7 @@ namespace UI.Areas.Customer.Controllers
 
 
         [HttpGet]
-        public IActionResult Purchase(int id,string paymentType)
+        public IActionResult Purchase(int id ,string paymentType)
         {
             if(paymentType == "bc")
             {
@@ -64,7 +64,6 @@ namespace UI.Areas.Customer.Controllers
         {
             return View();
         }
-
 
 
     }

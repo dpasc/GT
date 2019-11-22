@@ -44,7 +44,7 @@ namespace UI.Areas.Staff.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CityAttraction ca)
         {
-                
+            //For testing purposes
                 await _car.Add(ca);
                 return RedirectToAction("Index");
 

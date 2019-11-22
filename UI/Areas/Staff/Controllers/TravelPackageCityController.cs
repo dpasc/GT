@@ -41,6 +41,7 @@ namespace UI.Areas.Staff.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TravelPackageCity travelPackageCity)
         {
+         
             await _tpcr.Add(travelPackageCity);
 
             return RedirectToAction(nameof(Index), new {Id = travelPackageCity.TravelPackageId });
