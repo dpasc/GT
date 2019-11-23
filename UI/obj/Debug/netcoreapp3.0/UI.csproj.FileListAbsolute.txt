@@ -127,7 +127,6 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.TagHelpers.output.ca
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.RazorCoreGenerate.cache
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\CustomerTravelPackage\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\ConfirmPurchase.cshtml.g.cs
-C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Shared\Error.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Shared\_Layout.cshtml.g.cs
@@ -184,3 +183,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.Views.pdb
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.csproj.CopyComplete
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.dll
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.pdb
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\Index.cshtml.g.cs

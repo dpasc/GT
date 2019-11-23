@@ -22,6 +22,25 @@ namespace Domain.Data.MainRepository.Repositories
              .FirstOrDefault(entity => entity.Id == id);
         }
 
+        public async Task<List<CustomerTravelPackage>> GetAllOfCustomersTravelPackages(int customerId)
+        {
+            var list = context.Set<CustomerTravelPackage>()
+                .Include(ctp => ctp.CustomerId)              
+                .Where(tp => tp.CustomerId == customerId)
+                .ToListAsync();
+            return await list;
+        }
+
+        //Add this method to the main controller and allow other classes to
+        //override if need be 
+        public async Task<Person> GetCustomerByUserId(string userId)
+        {
+            var person = await context.Set<Person>()
+                .FirstOrDefaultAsync(p => p.UserId == userId);
+            return person;
+
+        }
+
 
 
     }

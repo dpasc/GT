@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Data;
+using Domain.Data.MainRepository.Repositories;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,56 +15,20 @@ namespace UI.Api
     [ApiController]
     public class TravelPackageController : ControllerBase
     {
-        private readonly GTContext _gtContext;
+        private readonly TravelPackageRepository _tpr;
 
-        public TravelPackageController(GTContext gTContext)
+        public TravelPackageController(TravelPackageRepository tpr)
         {
-            _gtContext = gTContext;
+            _tpr = tpr;
         }
 
-        //[HttpGet]
-        //public List<object> Get()
-        //{
-        //    var result = _gtContext.TravelPackages
-        //        .Include(tp => tp.Cities)
-        //            .ThenInclude(tpc => tpc.City)
-        //        .Include(tp => tp.Cities)
-        //            .ThenInclude(tpc => tpc.TravelPackageCityAttractions)
-        //            .ThenInclude(tpca => tpca.CityAttraction)
-        //        .Select(tp => new
-        //        {
-        //            tp.Id,
-        //            tp.Name,
-        //            Price = tp.RRP,
-        //            Cities = tp.Cities.Select(tpc => new
-        //            {
-        //                tpc.City.Name,
-        //                tpc.NumberOfDays,
-        //                Attractions = tpc.TravelPackageCityAttractions.Select(tpca => new
-        //                {
-        //                    tpca.CityAttraction.Name,
-        //                    tpca.CityAttraction.Description
-        //                })
-        //            })
-        //        })
-        //        .ToList<object>();
-        //    return result;
-        //}
-
-
-        // Get by location
         [HttpGet]
-        public async Task<IEnumerable<object>> Get(string location)
+        public IList<object> GetByLocation(string city)
         {
-            var tpListByLocation = _gtContext.TravelPackages
-                .Include(tp => tp.Cities)
-                    .Where(tp => tp.Cities.Any(c => c.City.Name == location))
-
-                .ToListAsync();
-                
-            return await tpListByLocation;
-
+            return _tpr.GetAllViaLocationApi(city);
         }
+
+       
 
 
     }

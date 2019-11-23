@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Domain.Data;
 using Domain.Data.MainRepository.Repositories;
+using Library.Models.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +22,11 @@ namespace UI.Areas.Customer.Controllers
             _customerRepository = customerRepository;
         }
  
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            Person customer = await _customerRepository.GetCustomerByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var list = _customerRepository.GetAllOfCustomersTravelPackages(customer.Id);
+            return View(list);
         }
 
         [HttpGet]

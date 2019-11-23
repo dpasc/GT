@@ -20,7 +20,6 @@ namespace Domain.Data.MainRepository.Repositories
                 .FirstOrDefaultAsync(p => p.UserId == userId);
             return person;
             
-
         }
 
         //public async Task<CustomerTravelPackage> Create(Customer customer, TravelPackage travelPackage)

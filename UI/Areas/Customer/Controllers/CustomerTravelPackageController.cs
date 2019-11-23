@@ -43,7 +43,7 @@ namespace UI.Areas.Customer.Controllers
         {
             cpa.Id = 0;
             await _ctpr.Add(cpa);
-            return View(cpa);
+            return RedirectToAction();
         }
     }
 }
