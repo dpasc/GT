@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Data.MainRepository.Repositories
 {
-    public class TravelPackageRepository: MainRepository<TravelPackage,GTContext>
+    public class TravelPackageRepository : MainRepository<TravelPackage, GTContext>
     {
-        public TravelPackageRepository(GTContext context):base(context)
+        public TravelPackageRepository(GTContext context) : base(context)
         {
 
         }
-
         //Get all for api
         public List<object> GetAllForApi()
         {
@@ -44,8 +43,6 @@ namespace Domain.Data.MainRepository.Repositories
          .ToList<object>();
             return result;
         }
-
-
         //Get by location for api using stored procedure 
         public IList<object> GetAllViaLocationApi(string city)
         {
@@ -53,10 +50,24 @@ namespace Domain.Data.MainRepository.Repositories
             var cmd = context.LoadStoredProcedure("spSearchTravelPackages");
             cmd.WithSqlParams(parameters);
             var result = cmd.ExecuteStoredProcedure<TravelPackageSearchResult>().GroupBy(r => r.Name).ToList<object>();
-            return result;    
+            return result;
         }
 
 
+        //Get by location for mvc 
+        public IEnumerable<ITravelPackage> GetAllViaLocationMVC(string city)
+        {
+
+            (string, object)[] parameters = { ("@city", city), ("@name", null), ("@description", null), ("@skip", 0), ("@take", 100), ("@orderby", "Name"), ("@orderDirection", "DESC") };
+            var cmd = context.LoadStoredProcedure("spSearchTravelPackages");
+            cmd.WithSqlParams(parameters);
+
+            IEnumerable<TravelPackageSearchResult> result = cmd.ExecuteStoredProcedure<TravelPackageSearchResult>().ToList();
+        
+            return result;
+
+
+        }
 
 
 

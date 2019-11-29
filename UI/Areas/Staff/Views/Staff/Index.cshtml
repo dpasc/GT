@@ -1,10 +1,12 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
+    var staff = (Library.Models.Models.Employee)ViewBag.StaffMember;
 }
 
 <h1>Staff Area</h1>
 
 <a asp-controller="TravelPackage" asp-action="Index">Travel Packages</a>|
 <a asp-controller="CityAttraction" asp-action="Index">City Attractions</a>
+@Html.ActionLink("Update", "UpdateDetails", new { id = staff.UserId })
 

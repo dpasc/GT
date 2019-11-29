@@ -62,6 +62,7 @@ namespace UI
             services.AddScoped<CustomerRepository>();
             services.AddScoped<PaymentRepository>();
             services.AddScoped<CustomerTravelPackageRepository>();
+            services.AddScoped<StaffRepository>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

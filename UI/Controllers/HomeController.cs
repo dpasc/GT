@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Data;
+using Domain.Data.MainRepository.Repositories;
 using Library.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,14 +19,16 @@ namespace UI.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly GTContext _gTContext;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly TravelPackageRepository _tpr;
 
 
 
-        public HomeController(ILogger<HomeController> logger, GTContext gTContext, UserManager<IdentityUser> userManager)
+        public HomeController(ILogger<HomeController> logger, GTContext gTContext, UserManager<IdentityUser> userManager,TravelPackageRepository tpr)
         {
             _logger = logger;
             _gTContext = gTContext;
             _userManager = userManager;
+            _tpr = tpr;
         }
 
         public IActionResult Index()
@@ -47,24 +50,21 @@ namespace UI.Controllers
         [HttpPost]
         public IActionResult Search(Search search)
         {
-            
-           
+                     
             if(!String.IsNullOrEmpty(search.TpNameQuery))
             {
                 var travaelpackages = from tp in _gTContext.TravelPackages select tp;
                 travaelpackages = travaelpackages.Where(tp => tp.Name.Contains(search.TpNameQuery));
                 return View(travaelpackages);
             }
-             else if(String.IsNullOrEmpty(search.TpNameQuery) && !String.IsNullOrEmpty(search.TpLocationQuery))
+            else if (String.IsNullOrEmpty(search.TpNameQuery) && !String.IsNullOrEmpty(search.TpLocationQuery))
             {
-               //ToDo Add this search
-                var travelPackages = _gTContext.TravelPackages
-                     .Include(tp => tp.Cities)
-                     .ToList();
-               
-                return View(travelPackages);                               
+                //ToDo Add this search
+                var travelPackages = _tpr.GetAllViaLocationMVC(search.TpLocationQuery);                           
+
+                return View(travelPackages);
             }
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
            
         }
 

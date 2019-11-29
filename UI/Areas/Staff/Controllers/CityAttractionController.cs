@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace UI.Areas.Staff.Controllers
 {
     [Area("Staff")]
-    public class CityAttractionController : Controller
+    public class CityAttractionController :Controller
     {
         // private readonly GTContext _context;
         private readonly CityAttractionsRepository _car;

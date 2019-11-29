@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.Areas.Staff.Controllers
 {
-    [Area("Staff")]
+   
     public class TravelProviderController : Controller
     {
         private readonly TravelProviderRepository _tpr;

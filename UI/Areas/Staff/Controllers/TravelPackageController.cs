@@ -8,10 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace UI.Areas.Staff.Controllers
 {
-    //ToDo: Fix status/ status id bug in update
-
-   // [Authorize(Roles = "Administrator")]
-    [Area("Staff")]
+    
     public class TravelPackageController : Controller
     {
         private readonly TravelPackageRepository _travelPackageRepository;

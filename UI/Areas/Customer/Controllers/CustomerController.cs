@@ -22,10 +22,11 @@ namespace UI.Areas.Customer.Controllers
             _customerRepository = customerRepository;
         }
  
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> CustomerDashBoard()
         {
             Person customer = await _customerRepository.GetCustomerByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var list = _customerRepository.GetAllOfCustomersTravelPackages(customer.Id);
+            //IEnumerable<CustomerTravelPackage> IEList = list;
             return View(list);
         }
 

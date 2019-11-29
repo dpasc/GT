@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Library.Models.Models.TravelPackage>
+﻿@model IEnumerable<Domain.Data.ITravelPackage>
 
 @{
     ViewData["Title"] = "Search";
@@ -21,9 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.StatusId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.RRP)
             </th>
@@ -46,9 +44,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.StatusId)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.RRP)
                 </td>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Data
 {
-   public class TravelPackageSearchResult
+   public class TravelPackageSearchResult : ITravelPackage
     {
             public int Id { get; set; }
             public string Name { get; set; }

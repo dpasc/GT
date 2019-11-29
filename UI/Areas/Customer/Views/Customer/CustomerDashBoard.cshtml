@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Library.Models.Models.CustomerTravelPackage>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CustomerDashBoard";
 }
 
-<h1>Index</h1>
+<h1>Customer DashBoard</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Update">Update Your Details!</a>
 </p>
 <table class="table">
     <thead>
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Feedback)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Leave Feedback", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Invoice", "Details", new { /* id=item.PrimaryKey */ }) |
+ 
             </td>
         </tr>
 }
