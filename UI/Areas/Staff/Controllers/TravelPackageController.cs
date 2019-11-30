@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace UI.Areas.Staff.Controllers
 {
-    
+    [Area("Staff")]
     public class TravelPackageController : Controller
     {
         private readonly TravelPackageRepository _travelPackageRepository;

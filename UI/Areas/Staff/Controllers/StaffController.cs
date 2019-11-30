@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace UI.Areas.Staff.Controllers
 {
 
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     [Area("Staff")]
     public class StaffController : Controller
     {
@@ -21,35 +21,16 @@ namespace UI.Areas.Staff.Controllers
             _staffRepository = sr;
         }
 
-
-        public async Task<IActionResult> Index()
-        {
-            Employee staff = await _staffRepository.GetEmployeeByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-            ViewBag.StaffMember = staff;
-            //Get all travel packages
-            var list = _staffRepository.GetAllTravelPackages();
-            return View(list);
-        }
-
         [HttpGet]
-        public async Task<IActionResult> UpdateDetails(string id)
+        public  IActionResult StaffDashboard()
         {
-            if(id == null)
-            {
-
-                return NotFound();
-            }
-            var staff = await _staffRepository.GetEmployeeByUserId(id);
-            if(staff == null)
-            {
-                return NotFound();
-            }
-
-            return View(staff);
+            return View();
         }
 
 
-     
+
+
+
+
     }
 }

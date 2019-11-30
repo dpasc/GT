@@ -143,7 +143,6 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pa
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Create.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\CityAttraction\Update.cshtml.g.cs
-C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\Index.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Create.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Delete.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\TravelPackageCityAttractions\Edit.cshtml.g.cs
@@ -186,3 +185,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.pdb
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\UpdateDetails.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\CustomerDashBoard.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\CustomerTravelPackage\LeaveFeedback.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\StaffDashboard.cshtml.g.cs
