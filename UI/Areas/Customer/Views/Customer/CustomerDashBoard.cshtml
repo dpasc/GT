@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Feedback)
             </td>
             <td>
-                @Html.ActionLink("Leave Feedback", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Leave Feedback", "LeaveFeedback","CustomerTravelPackage", new {id =item.Id }) |
                 @Html.ActionLink("Invoice", "Details", new { /* id=item.PrimaryKey */ }) |
  
             </td>

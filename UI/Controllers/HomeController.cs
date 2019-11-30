@@ -50,7 +50,7 @@ namespace UI.Controllers
         [HttpPost]
         public IActionResult Search(Search search)
         {
-                     
+             //ToDo: Clean Search Method        
             if(!String.IsNullOrEmpty(search.TpNameQuery))
             {
                 var travaelpackages = from tp in _gTContext.TravelPackages select tp;
@@ -59,9 +59,7 @@ namespace UI.Controllers
             }
             else if (String.IsNullOrEmpty(search.TpNameQuery) && !String.IsNullOrEmpty(search.TpLocationQuery))
             {
-                //ToDo Add this search
-                var travelPackages = _tpr.GetAllViaLocationMVC(search.TpLocationQuery);                           
-
+                var travelPackages = _tpr.GetAllViaLocationMVC(search.TpLocationQuery);                     
                 return View(travelPackages);
             }
             return RedirectToAction("Index");

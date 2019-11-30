@@ -185,3 +185,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.dll
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\UI.pdb
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\UpdateDetails.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\CustomerDashBoard.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\CustomerTravelPackage\LeaveFeedback.cshtml.g.cs

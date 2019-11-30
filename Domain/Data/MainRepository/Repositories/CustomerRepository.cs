@@ -25,9 +25,9 @@ namespace Domain.Data.MainRepository.Repositories
         public IEnumerable<CustomerTravelPackage> GetAllOfCustomersTravelPackages(int customerId)
         {
             var list = context.Set<CustomerTravelPackage>()
+            
+                .Where(ctp => ctp.CustomerId == customerId)
                 .ToList();
-   
-
             return  list;
         }
 

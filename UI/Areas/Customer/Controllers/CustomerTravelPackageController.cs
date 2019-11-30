@@ -36,14 +36,37 @@ namespace UI.Areas.Customer.Controllers
         }
 
 
-
-
         [HttpPost, ActionName("Index")]
         public async Task<IActionResult> IndexSend(CustomerTravelPackage cpa)
         {
             cpa.Id = 0;
             await _ctpr.Add(cpa);
             return RedirectToAction();
+        }
+
+
+        //Leave feedback
+        [HttpGet]
+        public async Task<IActionResult>LeaveFeedback(int id)
+        {
+            var ctp =await _ctpr.Get(id);
+            return View(ctp);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>LeaveFeedback(CustomerTravelPackage ctp)
+        {
+            if(ctp == null)
+            {
+                return NotFound();
+            }
+            if(ModelState.IsValid)
+            {
+               await _ctpr.Update(ctp);
+            }
+
+            return RedirectToAction("CustomerDashBoard","Customer");
         }
     }
 }
