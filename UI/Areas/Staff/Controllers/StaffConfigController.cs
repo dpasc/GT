@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using UI.Data;
 using Microsoft.AspNetCore.Identity;
 using Library.Models.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Domain.Data.DataTransferObjects;
 
 namespace UI.Areas.Staff.Controllers
 {
@@ -36,5 +38,32 @@ namespace UI.Areas.Staff.Controllers
             var staff = await _um.GetUsersInRoleAsync("Administrator");
             return View(staff);
         }
+
+        //Create the create view
+        [HttpGet]
+        public async Task<IActionResult> ConfigureNewStaff()
+        {
+            var list = await _um.GetUsersInRoleAsync("Customer");
+
+
+            ViewData["staffList"] = new SelectList(list,"Id","UserName" );
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfigureNewStaff(DTOUserRole dTOUserRole)
+        {
+            var user = _um.Users.FirstOrDefault(user => user.Id == dTOUserRole.UserId);
+            await _um.AddToRoleAsync(user, "Administrator");
+            return RedirectToAction("Index");
+
+
+
+        }
+
+
+
+
     }
 }
