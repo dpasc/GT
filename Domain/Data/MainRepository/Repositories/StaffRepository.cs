@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Domain.Data.MainRepository.Repositories
 {
     public class StaffRepository:MainRepository<Employee,GTContext>
@@ -15,6 +16,9 @@ namespace Domain.Data.MainRepository.Repositories
         {
 
         }
+
+
+ 
 
         public async Task<Employee> GetEmployeeByUserId(string userId)
         {

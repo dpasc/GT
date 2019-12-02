@@ -16,11 +16,8 @@ namespace Domain.Data
         {
 
         }
-
-
         //public GTContext()
         //{
-
         //    var builder = new ConfigurationBuilder();
         //    builder.AddJsonFile("appsettings.json", optional: false);
         //    var configuration = builder.Build();
@@ -32,7 +29,6 @@ namespace Domain.Data
         //{
         //    o.UseSqlServer(_connectionString);
         //}
-
         protected override void OnModelCreating(ModelBuilder b)
         {
             //config City

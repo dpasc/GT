@@ -186,3 +186,4 @@ C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Customer\CustomerDashBoard.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\CustomerTravelPackage\LeaveFeedback.cshtml.g.cs
 C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\Staff\StaffDashboard.cshtml.g.cs
+C:\Users\Damian\Desktop\GT\GT\UI\obj\Debug\netcoreapp3.0\Razor\Areas\Staff\Views\StaffConfig\Index.cshtml.g.cs
